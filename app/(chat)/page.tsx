@@ -1,27 +1,24 @@
-import { cookies } from 'next/headers';
-
-import { Chat } from '@/components/chat';
-import { DEFAULT_MODEL_NAME, models } from '@/lib/ai/models';
-import { generateUUID } from '@/lib/utils';
-
-export default async function Page() {
-  const id = generateUUID();
-
-  const cookieStore = await cookies();
-  const modelIdFromCookie = cookieStore.get('model-id')?.value;
-
-  const selectedModelId =
-    models.find((model) => model.id === modelIdFromCookie)?.id ||
-    DEFAULT_MODEL_NAME;
-
+export default function Home() {
   return (
-    <Chat
-      key={id}
-      id={id}
-      initialMessages={[]}
-      selectedModelId={selectedModelId}
-      selectedVisibilityType="private"
-      isReadonly={false}
-    />
+    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '50px', backgroundColor: '#f4f4f9' }}>
+      <h1 style={{ color: '#0070f3', fontSize: '3rem' }}>Welkom bij Thieu.ai</h1>
+      <p style={{ color: '#333', fontSize: '1.5rem', margin: '20px 0' }}>
+        Ontdek de kracht van AI en innovatie op één plek.
+      </p>
+      <button
+        style={{
+          padding: '10px 20px',
+          backgroundColor: '#0070f3',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontSize: '1rem',
+        }}
+        onClick={() => alert('Meer functies komen eraan!')}
+      >
+        Ontdek Meer
+      </button>
+    </div>
   );
 }
